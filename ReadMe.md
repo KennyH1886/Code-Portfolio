@@ -12,8 +12,8 @@
 
 - #### [Java Basics](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/JavaBasics.md)
 - #### [Comments](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyComments.md)
-- #### [Variables]()
-- #### [Branches (if-else)]()
+- #### [Variables](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyVariables.md)
+- #### [Branches (if-else)](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyIfElseBranches.md)
 - #### []()
 - #### []()
 
