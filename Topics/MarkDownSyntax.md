@@ -1,6 +1,5 @@
-# Coding notes 
 
-## Mark down syntax
+## Mark Down Syntax
 
 #### Lists
 
