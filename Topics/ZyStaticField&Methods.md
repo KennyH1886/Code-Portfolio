@@ -5,7 +5,7 @@ In a class, a ***static field*** is a field of the class instead of a field of e
 
 
 > Instance and class variable , Static fields are also called ***class variables***, and non-static fields are also called ***instance variables***.
-##Example incrementing static variable 
+## Example incrementing static variable 
 ````Java 
 public class Store {   
    // Declare and initialize public static field
