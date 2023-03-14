@@ -30,8 +30,8 @@
 - #### [ZyObjectClass](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyObjectClass.md)
 - #### [ZyArrayListOfObjects](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyArrayListOfObjects.md)
 - #### [ZyAbstractClassesIntroduction](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyAbstractClassesIntroduction.md)
-- #### [ZyGuiNotes]()
-- #### [ZyLoops]()
+- #### [ZyGuiNotes](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyGuiNotes.md)
+- #### [ZyLoops](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyLoops.md)
 - #### []()
 - #### []()
 
