@@ -357,15 +357,222 @@ A loop commonly must iterate a specific number of times, such as 10 times. Thoug
 
 ````java 
 
-) {
+
+for (initialExpression; conditionExpression; updateExpression) {
+  // Loop body
+}
+// Statements after the loop
+
+
+// while loop example 
+
+int i;
+i = 0;
+while (i < 5) {
+   //loop body 
+   i = i + 1 ;
 }
 
-// Loop body
+}
 
-) {
-
-for ( i = i + 1; i < 5; i = 0;)
 int i;
+for ( i = 0 ; i < 5; i = i+1) {
+   //loop body
+}
 
 
 ````
+
+1. This while loop pattern with i = 0 before, loop expression i < 5, and loop body ending with i = i + 1, iterates 5 times: when i = 0, 1, 2, 3, and 4.
+
+2. The pattern is so common that a special construct, a for loop, exists to collect the three parts in one place at the loop's top, improving readability and reducing errors.
+
+3. Note that semicolons separate the three parts. No semicolon is needed at the end.
+
+> The statement i = i + 1 is so common that the language supports the shorthand ++i, with ++ known as the increment operator. (Likewise, -- is the ***decrement operator***, --i means i = i - 1). As such, a standard way to loop N times is shown below.
+
+
+## A standard way to loop N times, using a for loop.
+
+
+
+````java
+int i;
+...
+for (i = 0; i < N; ++i) {
+   ...
+}
+
+````
+> Note: Actually two increment operators exist: ++i (pre-increment) and i++ (post-increment). ++i increments before evaluating to a value, while i++ increments after. Ex: If i is 5, outputting ++i outputs 6, while outputting i++ outputs 5 (and then i becomes 6). This material primarily uses ++i for simplicity and safety, although many programmers use i++, especially in for loops.
+
+The following program outputs the amount of a savings account each year for 10 years, given an input initial amount and interest rate. A for loop iterates 10 times, such that each iteration represents one year, outputting that year's savings amount.
+
+## For loop: Savings interest program.
+
+````java 
+
+import java.util.Scanner;
+
+public class SavingsInterestCalc {
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      double initialSavings;  // User-entered initial savings
+      double interestRate;    // Interest rate
+      double currSavings;     // Current savings with interest
+      int i;                  // Loop variable
+
+      System.out.print("Enter initial savings: ");
+      initialSavings = scnr.nextDouble();
+
+      System.out.print("Enter interest rate: ");
+      interestRate = scnr.nextDouble();
+
+      System.out.println("\nAnnual savings for 10 years: ");
+
+      currSavings = initialSavings;
+      for (i = 0; i < 10; ++i) {
+         System.out.println("$" + currSavings);
+         currSavings = currSavings + (currSavings * interestRate);
+      }
+   }
+}
+
+````
+
+
+## output
+
+````
+Enter initial savings: 10000
+Enter interest rate: 0.05
+
+Annual savings for 10 years: 
+$10000.0
+$10500.0
+$11025.0
+$11576.25
+$12155.0625
+$12762.815625
+$13400.95640625
+$14071.0042265625
+$14774.554437890625
+$15513.282159785156
+
+````
+
+> The example below computes the average of an input list of integer values. The first input indicates the number of values in the subsequent list. That number controls how many times the subsequent for loop iterates.
+
+````java 
+import java.util.Scanner;
+
+public class ListAverage {
+   public static void main(String [] args) {
+      Scanner scnr = new Scanner(System.in);
+      int currValue;
+      int valuesSum;
+      int numValues;
+      int i;
+      
+      numValues = scnr.nextInt(); // Gets number of values in list
+      
+      valuesSum = 0;
+      
+      for (i = 0; i < numValues; ++i) {
+         currValue = scnr.nextInt(); // Gets next value in list
+         valuesSum += currValue;
+      }
+      
+      System.out.println("Average: " + (valuesSum / numValues));
+   }
+}
+````
+
+
+## output
+
+````
+4 10 1 6 3
+Average: 5
+
+...
+
+5 -75 -50 30 60 80
+Average: 9
+
+````
+
+Generally, a programmer uses a for loop when the number of iterations is known (like loop 5 times, or loop numItems times), and a while loop otherwise.
+
+
+| word  | definition | |
+|---| ---| ---| 
+| for  | Number of iterations is computable before the loop, like iterating N times.|
+| while | Number of iterations is not (easily) computable before the loop, like iterating until the input is 'q'. |
+
+## Decrementng example
+
+
+
+````java 
+public class ForLoopOutput {
+   public static void main (String [] args) {
+      int i;
+   
+      for (i = 0; i > -2; --i) {
+         System.out.print(i);
+      }
+   }
+}
+````
+
+### output: 
+````
+0-1
+````
+> reminder: decrementing essentially subtracts the i value by 1 for each iteration and onyl affects the iteration not the i value within the for loop body. In this example it goes from 0, -1 and stops at - 2
+
+
+
+# More For Loop examples 
+
+## Example: Finding the max
+
+Analyzing data is a common programming task. A common data analysis task is to find the maximum value in a list of values. A loop can achieve that task by updating a max-seen-so-far variable on each iteration.
+
+````java 
+import java.util.Scanner;
+
+// Outputs max of list of integers
+// First value indicates list size
+// Ex: 4 -1 9 0 3  yields 9
+
+public class ListMax {
+   public static void main(String [] args) {
+      Scanner scnr = new Scanner(System.in);
+      int maxSoFar = 0;
+      int currValue;
+      int numValues;
+      int i;
+
+      numValues = scnr.nextInt();
+
+      for (i = 0; i < numValues; ++i) {
+         currValue = scnr.nextInt();
+
+         if (i == 0) { // First iteration
+            maxSoFar = currValue;
+         }
+         else if (currValue > maxSoFar) {
+            maxSoFar = currValue;
+         }
+      }
+
+      if (numValues > 0) {
+         System.out.println("Max: " + maxSoFar);
+      }
+   }
+}
+````
+
+

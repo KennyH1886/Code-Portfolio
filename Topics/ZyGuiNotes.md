@@ -1956,3 +1956,42 @@ The File class, which the programmer can access by including the import statemen
 If the File is readable (i.e., readFile.canRead() returns true), the actionPerformed() method creates a FileInputStream stream and a corresponding Scanner object to read the entire file and print the file's contents to the GUI's text area. Otherwise, if the file is not readable, the program displays a message dialog with the message "Can't read file!".
 
 The statements that create the file stream and read the file are enclosed in a try-catch block in order to detect and handle any exceptions (i.e., errors) encountered while creating the FileInputStream. Exception handling for file I/O is discussed in more detail elsewhere. For now, note that a programmer must use try-catch blocks to enclose statements that create and use a FileInputStream within the actionPerformed() method.
+
+
+
+
+
+
+# JoptionPane selection code example 
+
+````java 
+
+
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
+public class JOptionPaneTest3 {
+  public static void main(String[] args) {
+    JDialog.setDefaultLookAndFeelDecorated(true);
+    Object[] selectionValues = { "Pandas", "Dogs", "Horses" };
+    String initialSelection = "Dogs";
+    Object selection = JOptionPane.showInputDialog(null, "What are your favorite animals?",
+        "Zoo Quiz", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+    System.out.println(selection);
+  }
+}
+
+````
+
+
+![gui pic](/Topics/JOptionPaneSelecter.png)
+
+````java 
+{ "Area of a Square", "Perimeter of a Square", "Perimeter of a Rectangle" , "Area of a Rectangle", "Area of a Parallelogram", "Perimeter of a Parallelogram", "Area of a Circle", "Circumfrence of a Circle", "Area of a Triangle", "Perimeter of a Triangle", "Area of a Trapezoid", "Perimeter of a Trapezoid", "Volume of a Rectangular Solid"  ,"Surface Area of a Rectangular Solid" , " Volume of a Cube" , "Surface are of a Cube" , "Volume of a Right Circular Cylinder" ,  "Surface area of Right Circular Cylinder", "Volume of a Sphere ", "Surface area of a Sphere", "Volume of a Right Circular Cone " , "Surface area of Right Circular Cone ", "Volume of a Square or Rectangular Pyramid", "Surface Area of Right Circular Cone Frustum " , "Volume of a Right Circular Cone Frustum"};
+
+
+````
+
+
+
+

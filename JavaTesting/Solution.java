@@ -10,7 +10,17 @@ public class Solution {
         // int[] dupe = {1,2,2,4,5};
         // int[] noDupe = {1,2,3,4,5,6,7,8};
         // int[] twoDupe = {1,2,2,3,3,4,5};
+ 
 
+
+
+        /**
+         * Given an integer array nums, return true if any value appears at least twice in the array,
+         *  and return false if every element is distinct.
+         * 
+         * @param nums array of numbers 
+         * @return true or false depending on if there is a dupe or not.
+         */
         public  boolean containsDuplicate(int[] nums) {
             // this implementation checks to see what
             // the next element is and compares them with a nested for loop.
@@ -24,7 +34,6 @@ public class Solution {
             return false;
         }
     
-
 
 
 
