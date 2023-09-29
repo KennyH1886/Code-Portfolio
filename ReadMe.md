@@ -36,8 +36,7 @@
 - #### [ZyAbstractClassesIntroduction](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyAbstractClassesIntroduction.md)
 - #### [ZyGuiNotes](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyGuiNotes.md)
 - #### [ZyLoops](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/ZyLoops.md)
-- #### []()
-- #### []()
+
 
 
 
@@ -47,6 +46,8 @@
 - #### [Section 1]()
 
 - #### [C++ syntax]()
+
+- #### [C++ Linked List]()
 
 
 
