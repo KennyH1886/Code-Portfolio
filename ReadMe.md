@@ -50,6 +50,6 @@
 - #### [C++ Linked List](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/lecture9(LinkedList).md)
 
 
-- #### [C++ linked list code ]()
+- #### [C++ linked list code ](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/C%2B%2B_LinkedListFunctions.cpp)
 
 
