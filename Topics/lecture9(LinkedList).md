@@ -230,55 +230,295 @@ return 0;
 
 ````
 
+# Reverse linked list 
+
+> good way to practice recursion 
+
+10->2->5->3->NULL
 
 
 
-
-
-so 
-
+````c++
+#include <iostream>
+using namespace std;
 
 
 class node {
-nxt
-val
+    public:       // bad practice
+    int val;
+    node* next;
+    node(int v, node* nxt){
+        val = v;
+        next = nxt;
+    }
+};
+node*head = NULL;
+node*tail = NULL;
+
+// Utility function to print the linked list
+void printList(node *head)
+{
+    while (head != nullptr)
+    {
+        std::cout << head->val;
+        if (head->next != nullptr)
+        {
+            std::cout << " -> ";
+        }
+        head = head->next;
+    }
+    std::cout << std::endl;
+};
+
+public:     LinkeList() {
+    head = tail = NULL;
+}
+void push_at_head(int k){
+    insert_at_head(k);
+} int pop_at_head(){
+    int temp = head->val;
+    delete_at_head();
+    return temp;
+} int pop_at_tail(){
+    int temp = tail->val;
+    delete_at_tail();
+    return temp;
 }
 
-class print list{
-    return linked list  - > ;
+// 0(n) very slow
+void delete_at_tail(node*){
+if (head== tail){
+    delete tail;
+    head = tail = NULL
+    return;
 }
 
+node*newtail = head
+while (newtail->next != tail) newtail = newtail->next;
 
-
-duplicate_list(node*h){
-if(h == NULL){
-return h;
-}
-
-node*ogValues = h;
-
-while(h->next != NULL ){
-    int i;
-    int j;
- int dupe[i] = h->val ;
-
-
-    node*newNode[j] = node(dupe[i]);
-    ogValues->next = newNode;
-        i++;
-        j++;
+delete tail;
+tail = newtail;
+tail->next = NULL;
 }
 
 
 
 
+//(0)n
+node*reverse(node* h){
+if (h ==NULL|| h->next == NULL){
+    return h;
+}
+    // 3->5-2-10
+   p =  reverse(h->next); // call from second to last and reverses it 
+    h->next->next = h; // puts 10 at the end beginning value to the end.
+    h->next= NULL; // ends the loop
+    return p;
+}
+// (0)1
+void insert_at_tail(int k){
+    // use these as global values.
+    if (head == NULL ){
+        head = tail = new node(k);
+    } else {}
+    // node*head;
+    // node*tail;
+    tail->next = new node(k);
+    tail = tail->next;
+
+
 
 }
+
+
 
 
 int main(){
-    head = new node (1);
-    head = new node (2);
-    duplicate_List(head);
-    printList(head); // 1->1->2->2->null
+
+    // linked list application after implimentation of utility variables.
+LinkedList l;
+l.push_at_head(1);
+l.push_at_head(2);
+l.push_at_head(3);
+l.push_at_head(4);
+l.printList();
+int r = l.pop_at_head();
+l.printList();
+l.push_at_tail(10);
+l.printlist();
+r = l.pop_at_tail();
+cout << "the tail value"
+l.printList();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ node* head1 = new node(10);
+    head1->next = new node(2);
+    head1->next->next = new node(5);
+    head1->next->next->next = new node(3);
+
+node* result = reverse(head1);
+    printList(head1); 
+
+insert_at_tail(5);
+insert_at_tail(10);
+insert_at_tail(3);
+printList(head);
+
+
 }
+
+
+
+
+
+
+````
+
+> important
+more examples of linked list implementation included.
+
+
+# Linked List code wrap up
+
+````c++ 
+#include <iostream>
+using namespace std;
+
+class node {
+public:
+    int val;
+    node* next;
+    
+    node(int v,node* nxt=NULL) {
+        val = v;
+        next = nxt;
+    }
+};
+class LinkedList {
+private:
+    node *head, *tail;
+    // return the new head of linked list
+    // O(1)
+    void insert_at_head(int k) {
+        if (head==NULL) head = tail = new node(k);
+        else head = new node(k,head);    
+    }
+    void delete_at_head() {
+        if (head==NULL) return;
+        node* temp = head->next;
+        delete head;
+        head = temp;
+        if (head==NULL) tail=NULL;
+    }
+/*
+    // O(n)
+node* reverse(node* h) {
+    if (h==NULL or h->next==NULL) return h;
+    node *p = reverse(h->next);
+    h->next->next = h;
+    h->next = NULL;
+    return p;
+}
+*/
+    // O(1)
+    void insert_at_tail(int k) {
+        if (head == NULL) head = tail = new node(k);
+        else {
+            tail->next = new node(k);
+            tail = tail->next;
+        }
+    }
+    // O(n): use this function with caution. Very slow
+    void delete_at_tail() {
+        if (head==NULL) return;
+        if (head==tail) { // there is one node
+            delete tail;
+            head = tail = NULL;
+            return;
+        }
+        // move new tail to right before the old tail
+        node *newtail = head;
+        while (newtail->next != tail) newtail = newtail->next;
+        // delete old the tail
+        delete tail;
+        tail = newtail;
+        tail->next = NULL;
+    }
+    
+public:
+    LinkedList() {
+        head = tail = NULL;
+    }
+    LinkedList(int a[], int n) {
+        head = tail = NULL;
+        for (int i=0;i<n;i++) {
+            insert_at_tail(a[i]);
+        }
+    }
+    void push_at_head(int k) {
+        insert_at_head(k);
+    }
+    int pop_at_head() {
+        int temp = head->val;
+        delete_at_head();
+        return temp;
+    }
+    void push_at_tail(int k) {
+        insert_at_tail(k);
+    }
+    int pop_at_tail() { // SLOW function
+        int temp = tail->val;
+        delete_at_tail();
+        return temp;
+    }
+    void print() {
+        node *h = head;
+        while (h!=NULL) {
+            cout << h->val << "->";
+            h = h->next;
+        }
+        cout << "NULL" << endl;
+    }
+};
+int main() {
+    LinkedList l;
+    l.push_at_head(1);
+    l.push_at_head(2);
+    l.push_at_head(3);
+    l.push_at_head(4);
+    l.print();
+    int r = l.pop_at_head();
+    cout << "the head value=" << r << endl;
+    l.print();
+    l.push_at_tail(10);
+    l.print();
+    r = l.pop_at_tail();
+    cout << "the tail value=" << r << endl;
+    l.print();
+    
+    int a[] = { 5,6,7,8,9,20, 3 };
+    LinkedList l2(a,sizeof(a)/sizeof(int));
+    l2.print();
+    return 0;
+}
+
+
+
+
+
+````
