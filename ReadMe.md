@@ -52,4 +52,6 @@
 
 - #### [C++ linked list code ](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/C%2B%2B_LinkedListFunctions.cpp)
 
+- #### [C++ Stacks and Queues  ]()
 
+- #### [C++ Stacks and Queues Functions ]()
