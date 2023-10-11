@@ -522,3 +522,123 @@ int main() {
 
 
 ````
+
+
+
+
+# bonus linked list functions , (remove odd & cycle)
+````C++
+#include <iostream>
+using namespace std;
+
+class node {
+public:
+    int val;
+    node* next;
+    
+    node(int v,node* nxt=NULL) {
+        val = v;
+        next = nxt;
+    }
+};
+// print utility function 
+    void print() {
+        node *h = head;
+        while (h!=NULL) {
+            cout << h->val << "->";
+            h = h->next;
+        }
+        cout << "NULL" << endl;
+    }
+
+
+/**
+ * Removes odd positon nodes and deletes them  * and returns the updated head. using recursion.
+ * 
+ **/
+node* remove_odd(node*h){
+if (h == NULL){
+return NULL;
+}
+if (h->next == NULL){
+ delete h;
+return NULL;
+}
+node*p = h->next;
+h->next = r;
+
+h = h->next;
+node*r = remove_odd(h->next) ;
+h->next = r;
+return h;
+}
+
+
+/**
+ * Removes odd positon nodes and deletes them  * and returns the updated head.
+ * 
+ **/
+node* remove_odd(node*h){
+if (h == NULL){
+return NULL;
+}
+
+node*q = h->next;
+delete h;
+h = q;
+node* p = h; // used p to save h to return.
+while (p->next != NULL &&  p->next != NULL){
+    q = p->next;
+p->next = p->next->next; 
+p = p->next;
+delete q;
+}
+
+return h;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// make test cases
+int main(){
+node*head = new node(1) ;
+print(head);
+head = remove_odd(head);
+print(head);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+````
+
+
+> binary and hash table used to hold unique values , useful in linked list.
+
+for cycles you can use two pointers to record values and find patterns to eventually find an end statement to the program , tortiose and hare structure.
