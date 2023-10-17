@@ -3,24 +3,47 @@
 # Stack 
 
 - Linear Data Structure
-
+#### Stack is a high level data structure that specifies a behavior 
 - LIFO or FILO
-- Last In First Out or First In -Last Out
-- Applications
+####  Last In First Out or First In -Last Out
+
+# Applications
+#### very important data structure , 
+1. function call- calls stack A->B->C->D
+2. to store local variables 
+3. stack is memory (placeholder)
 - Undo/Redo
 - Depth first search
 - Backtracking
 - Sudoku solver, 8-queen, …
-- Function Call stack
+
 - Implementing Recursion
 
 ![stack pic](/Topics/Stack_Example.png)
 
 
 ## Important Operations on Stack
-- Push
+-lifo 
+
+- Push // adds to the stack  0(1)
 ```C++
 
+private:
+    Node<T>* top;
+
+// insert at tail
+
+
+append //python allocates to the last position
+a[n] = k; n++
+n = size();
+// array push
+a[n-1]
+
+
+   node* newNode = new Node<T>(val);
+        newNode->next = top;
+        top = newNode;
 
 
 
@@ -38,7 +61,52 @@
 
 
 
-- Pop
+- Pop  // returns and remove from stack 0(1)
+```C++
+
+private:
+    Node<T>* top;
+
+// delete at tail 0(n)
+
+// pop array
+n--  // decrement size to delete at end. 
+
+  if (isEmpty()) {
+            std::cout << "Stack underflow: The stack is empty." << std::endl;
+            return;
+        }
+        node * temp = top;
+        top = top->next;
+        delete temp;
+
+
+
+
+
+
+
+
+
+```
+- Top(peek)  // the top of the stack 0(1)
+```C++
+
+private:
+    Node<T>* top;
+
+        if (isEmpty()) {
+            std::cerr << "Stack is empty." << std::endl;
+            exit(EXIT_FAILURE);
+        }
+        return top->data;
+
+
+
+
+```
+- isEmpty() 0(1)
+- size() 0(1)
 ```C++
 
 
@@ -47,38 +115,27 @@
 
 
 ```
-- Top(peek)
-```C++
 
 
 
 
+# Implementation
 
-
-```
-- isEmpty
-```C++
-
-
-
-
-
-
-```
-
-
-
-
-## Implementation
-
-Linked List
+## Linked List
 - Advantage? 
-Disadvantage?
+###### easier to code
+- Disadvantage?
+###### slower
 
-- Array / Vector
-Advantage?
-Disadvantage?
+## Array / Vector
+Advantage? 
+###### faster than linked list
 
+- Disadvantage?
+
+
+
+amortized cost - scan size for the future 
 
 
 
@@ -102,7 +159,7 @@ S.top()
 # Example problems & Functions
 
 
-
+## parenthesis check stack
 ```C++
 
 
@@ -121,8 +178,12 @@ S.top()
 - FIFO
 - First In First Out
 - Applications
-- Scheduling CPU, Job
+- Scheduling CPU, Job 
 - Breadth first search
+- cores 
+- operating systems use queues to run multiple tasks
+
+
 
 ## Operations on Queue
 
@@ -130,7 +191,17 @@ S.top()
 
 
 ```C++
+   Node<T>* newNode = new Node<T>(val);
 
+        if (isEmpty()) {
+            head = tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = newNode;
+        }
+
+        std::cout << val << " enqueued to the queue." << std::endl;
+    }
 
 
 
@@ -153,7 +224,21 @@ O(1)
 
 
 ```C++
+     if (isEmpty()) {
+            std::cout << "Queue is empty. Cannot dequeue." << std::endl;
+            return;
+        }
 
+        Node<T>* temp = head;
+        head = head->next;
+
+        if (head == nullptr) {
+            tail = nullptr;
+        }
+
+        std::cout << temp->data << " dequeued from the queue." << std::endl;
+        delete temp;
+    }
 
 
 
@@ -206,6 +291,10 @@ Q.empty(); // tests if a queue is empty
 
 
 ## Example problems 
+
+
+
+Using a queue to put values in front of a list after updating it.
 
 
 ````C++
