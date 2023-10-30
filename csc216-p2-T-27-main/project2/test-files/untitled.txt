@@ -1,0 +1,4 @@
+! test
+# TestCase test,Equivalence Class
+* Testing TestCase
+* These tests should pass.
