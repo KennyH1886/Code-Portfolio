@@ -5,8 +5,12 @@
 
  #### [MarkDown Syntax]( https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/MarkDownSyntax.md)
 
- ### CSC 216
--  #### [Guided notes]()
+ ### Coding projects 
+-  #### [Guided project part 1](https://github.com/KennyH1886/Notes-Complete-edition/tree/master/csc216-GP1-001-113-main/Wolfscheduler)
+-  #### [Guided project part 2](https://github.com/KennyH1886/Notes-Complete-edition/tree/master/csc216-GP2-001-113-main/Wolfscheduler)
+-  #### [Guided project part 3](https://github.com/KennyH1886/Notes-Complete-edition/tree/master/csc216-GP3-001-113-main/Wolfscheduler)
+-  #### [Java project 1](https://github.com/KennyH1886/Notes-Complete-edition/tree/master/csc216-P1-001-113)
+-  #### [Java project 2](https://github.com/KennyH1886/Notes-Complete-edition/tree/master/csc216-p2-T-27-main)
 
 
 ### JOptionPane code
