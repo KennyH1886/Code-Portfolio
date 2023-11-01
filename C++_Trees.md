@@ -380,3 +380,91 @@ designed for searching
 binary trees on test not search tree , no code for it on test \
 
 insert,search, delete, O(h)
+
+
+
+
+
+# Binary search trees (continued)
+
+````c++
+#include <iostream>
+#include <queue>
+#include <stack>
+using namespace std;
+
+public:
+    int val;
+    tree_node *left;
+    tree_node *right;
+public:
+tree_node(int v,tree_node* l=NULL, tree_node* r=NULL) {
+    val = v;
+    left = l;
+    right = r;
+}
+};
+
+tree_node* remove (tree_node* r, int k){
+if (r == NULL) return NULL;
+
+else return r;
+else if (r->right == NULL && r->right == NULL) return ;
+ if (r->val == k){
+   tree_node* temp = r->left;
+    delete r;
+    return NULL;
+
+    else if (r->val > k ) {
+        r->left = remove(r->left,k);
+    }else {
+        r->right = remove(r->right,k);
+    }
+ }
+    return r;
+    else if (r->left == NULL){
+         
+    } else {
+        if (r->val == k)
+    v = find_min(r->right);   
+    r->right = remove(r->right, v);
+    r->val = v;
+    }  return r;
+    }
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main(){
+
+
+
+
+}
+
+
+
+
+````
+
+
+
+# bro what
