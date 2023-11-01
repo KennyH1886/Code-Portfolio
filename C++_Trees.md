@@ -387,84 +387,221 @@ insert,search, delete, O(h)
 
 # Binary search trees (continued)
 
+
+
+## delete in a binary search tree
+
+
 ````c++
 #include <iostream>
 #include <queue>
 #include <stack>
+
 using namespace std;
 
+class tree_node {
 public:
-    int val;
-    tree_node *left;
-    tree_node *right;
+	int val;
+	tree_node *left;
+	tree_node *right;
 public:
-tree_node(int v,tree_node* l=NULL, tree_node* r=NULL) {
-    val = v;
-    left = l;
-    right = r;
-}
+	tree_node(int v, tree_node* l=NULL, tree_node* r=NULL) {
+		val = v;
+		left = l;
+		right = r;
+	}
 };
 
-tree_node* remove (tree_node* r, int k){
-if (r == NULL) return NULL;
+// returns the number of nodes in tree r
+int count(tree_node* r) {
+	if (r==NULL) return 0;
+	//if (r->left == NULL && r->right == NULL) return 1;
+	return count(r->left)+count(r->right)+1;
+}
 
-else return r;
-else if (r->right == NULL && r->right == NULL) return ;
- if (r->val == k){
-   tree_node* temp = r->left;
-    delete r;
-    return NULL;
+// count number of leaves in tree r
+int leaves(tree_node* r) {
+	if (r==NULL) return 0;
+	if (r->left == NULL && r->right == NULL) return 1;
+	return leaves(r->left)+leaves(r->right);
+}
 
-    else if (r->val > k ) {
-        r->left = remove(r->left,k);
-    }else {
-        r->right = remove(r->right,k);
+// sum of all nodes
+int sum(tree_node* r) {
+	if (r==NULL) return 0;
+	return sum(r->left)+sum(r->right)+r->val;
+}
+
+void post_traversal(tree_node* r) {
+	if (r==NULL) return;
+	post_traversal(r->left);
+	post_traversal(r->right);
+	cout << r->val << " ";
+}
+
+void in_traversal(tree_node* r) {
+	if (r==NULL) return;
+	in_traversal(r->left);
+	cout << r->val << " ";
+	in_traversal(r->right);
+}
+
+void pre_traversal(tree_node* r) {
+	if (r==NULL) return;
+	cout << r->val << " ";
+	pre_traversal(r->left);
+	pre_traversal(r->right);
+}
+
+void level_traversal(tree_node* r) {
+	if (r==NULL) return;
+	queue<tree_node*> Q;
+	Q.push(r);
+	while (!Q.empty()) {
+		tree_node* p = Q.front();
+		cout << p->val << " ";
+		Q.pop();
+		if (p->left) Q.push(p->left);
+		if (p->right) Q.push(p->right);
+	}
+}
+/*
+tree_node* insert(tree_node* r, int k) {
+	if (r==NULL) return new tree_node(k);
+	if (r->val < k) r->right = insert(r->right,k);
+	else if (r->val > k) r->left = insert(r->left,k);
+	return r;
+}
+*/
+// worst case: O(h), best case: O(1)
+tree_node* insert(tree_node* r, int k) {
+	if (r==NULL) return new tree_node(k);
+	tree_node *p = r;
+	while (true) {
+		if (p->val > k) {
+			if (p->left) p = p->left;
+			else {
+				p->left = new tree_node(k);
+				break;
+			}
+		} else if (p->val < k) {
+			if (p->right) p = p->right;
+			else {
+				p->right = new tree_node(k);
+				break;
+			}
+		} else break;
+	}
+	return r;
+}
+
+// worst case: O(h), best case: O(1)
+bool search(tree_node* r, int k) {
+	if (r==NULL) return false;
+	if (r->val < k) return search(r->right,k);
+	else if (r->val > k) return search(r->left,k);
+	else return true;
+}
+
+int find_min(tree_node* r) {
+  while (r->left != NULL) r=r->left;
+  return r->val;
+}
+// removes nodes in a bianry search tree , worst case :O(h) , best case :
+tree_node* remove(tree_node* r, int k) {
+  if (r==NULL) return NULL;
+  if (r->val == k) {
+    tree_node* temp;
+    // leaf
+    if (r->left==NULL && r->right==NULL) {
+      delete r;
+      return NULL;
+    } // left child only
+    else if (r->right==NULL) {
+      temp = r->left;
+      delete r;
+      return temp;
+    } // right child only
+    else if (r->left==NULL) {
+      temp = r->right;
+      delete r;
+      return temp;
     }
- }
+    // has 2 children
+    else {
+      // find smallest in the right child
+      int v = find_min(r->right);
+      // delete v from right child
+      r->right = remove(r->right,v);
+      // set root's value to v
+      r->val = v;
+      return r;
+    }
+  } else if (r->val < k) {
+    r->right = remove(r->right,k);
     return r;
-    else if (r->left == NULL){
-         
-    } else {
-        if (r->val == k)
-    v = find_min(r->right);   
-    r->right = remove(r->right, v);
-    r->val = v;
-    }  return r;
-    }
+  } else {
+    r->left = remove(r->left,k);
+    return r;
+  }
+}
 
+int height(tree_node* r) {
+	if (r==NULL) return -1;
+	return max(height(r->left),height(r->right))+1;
 }
 
 
 
 
+int main() {
+tree_node* root=NULL;
+cons int n = 100000;
+int i;
+// strand(time(NULL)) // using time to make true random numbers 
+// rand () generates random numbers with integers 1-10.
+t1 = time(NULL);
+for (i=0; i<n ;i++){
+    int k = rand();
+
+    // cout << k << endl;  
+
+    root = insert(root,k);
 
 }
+time_t t2 = time(NULL);
+cout << "time spent " << t2-t1 << '\n';
+// in_traversal(root); cout << endl;
+cout << "hieght of tree " << height(root) << '\n';
 
 
+	tree_node* root=NULL;
+	root = insert(root,2);
+	root = insert(root,1);
+	root = insert(root,5);
+	root = insert(root,3);
+	root = insert(root,5);
+	root = insert(root,10);
+	root = insert(root,7);
+	root = insert(root,0);
+	
+	in_traversal(root); cout << endl;
+	cout << "tree height=" << height(root) << endl;
+	
+        root = remove(root,2);
+	in_traversal(root); cout << endl;
+	cout << "tree height=" << height(root) << endl;
 
-
-
-
-
-
-
-
-
-
-
-
-int main(){
-
-
-
-
+	return 0;
 }
-
-
 
 
 ````
 
 
+## Better more advanced binary search trees: 
+### examples: AVL tres , Red-Black tree ( C++), Splay tree, ... -> Binary search trees 
+### more examples: B-tree (M'ary tree), Database, My SQL
 
-# bro what
+
+# Map and set 
