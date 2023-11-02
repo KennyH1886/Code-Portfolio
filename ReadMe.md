@@ -47,9 +47,9 @@
 
 ### Data Structures (C++) 
 
-- #### [Section 1]()
+- #### [Section 1](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/C%2B%2BSection1.md)
 
-- #### [C++ syntax]()
+- #### [C++ syntax](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/C%2B%2BSyntax.md)
 
 - #### [C++ Linked List](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/lecture9(LinkedList).md)
 
@@ -64,4 +64,4 @@
 
 - #### [C++ Tree Functions ](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/C%2B%2B_Trees_Functions.cpp)
 
-- #### [C++ set and map]()
+- #### [C++ Set and Map]()
