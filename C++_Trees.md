@@ -15,7 +15,7 @@
 
 ### Tree with at most two children is binary tree
 
-![binary search tree](/Topics/bs_tree.png) 
+![binary search tree](Topics/bs_tree.png) 
 
 - Not a linear structure
 - Hierarchical
@@ -71,7 +71,7 @@ What is the minimum height?
 # Types of Binary Trees: Full Binary Tree
 
 Full Binary Tree: Every node either have 2 children or no child.
-![full binary tree pic](/Topics/full_binary.png) 
+![full binary tree pic](Topics/full_binary.png) 
 
 
 
@@ -81,7 +81,7 @@ Every level is completely filled excepted for the last level is fill from left t
 
 Perfect Binary Tree is Complete Binary Tree with last level filled
 
-![complete binary tree pic](/Topics/complete_binary.png) 
+![complete binary tree pic](Topics/complete_binary.png) 
 
 ## Balanced Binary Tree
 Height of Left and Right child of any node differ at most by one
