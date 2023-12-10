@@ -1,7 +1,13 @@
 # Map and Set 
 
 ### very common and useful data structures 
+- good for searching values 
+- only use for searching mainly
 
+# Set 
+
+- unique 
+- complexity O(n) insert n times 
 
 
 
@@ -65,6 +71,9 @@ cout <<'\n';
 
 # MAP
 
+
+- map(key,value)
+
 ````c++
 #include <set>
 #include <iostream>
@@ -87,6 +96,30 @@ int main(){
 
    // currently two nodes 
 
+
+ const int  n = 4;
+string words[4] = {"hello", "world", "hello", "abc"};
+
+map<string,int> M;
+int i;
+for(i=0; i <n, i++){
+if (M.find(words[i])== M.end()) {
+M[words[i]]++;
+} else {// not found 
+    M[words[i]] = 1;
+}
+}
+map<string,int>::iterator it;
+for (it=M.begin(); it!=M.end();it++){
+cout << it->first << ":" << it->second << '\n';
+}
+
+
+
+
+
+
+
 }
 ````
 # Binary Heap and Priority Queue 
@@ -94,10 +127,11 @@ int main(){
 ## Priority Queue
 
 ### Definition
-
+- smallest value comes out first.
 ### Queue
 - first-in, first-out
 ### Priority queue
+first in first out with the highest priority.  Best case is to use binary heap over bst , more heaps than binary are usedin real world. 
 
 ### Highest Priority First
 ### Operations
@@ -106,19 +140,67 @@ int main(){
 
 
 ## Applications
-
+- fast check out 
+- fast or multivariable queues 
 
 ### Print queue
 - Each job has a priority.
 - The highest priority job is printed next.
-
+- shortest path 
 ### Event Simulation
 
 - Each event has a time at which it occurs
 - Each new event is put into a priority queue.
 - The simulator gets the next event from the priority queue and processes it.
 
+## priority queue example implementation.
+````c++
+#include <iostream>
+#include <queue>
+using namespace std;
+
+
+
+int main(){
+    priority_queue<double> PQ;
+    PQ.push(10.0);
+    PQ.push(9.4);
+    PQ.push(20.11);
+    PQ.push(-200);
+    PQ.push(2000.19);
+
+    cout << PQ.top() << '\n';
+    PQ.pop();  
+    cout << PQ.top() << '\n'
+    
+    while (!PQ.empty()){
+        cout << PQ.top() << '\n'
+    }
+        return 0;
+
+}
+
+
+````
+>  most languages should have a priority queue , uaeful structure. 
+
+
+
+
+
+
+
+
+
+
+
 # Binary Heaps Implementation of Priority Queue
+
+# Binary heap definition
+- binary tree
+- parents less than or equal to  children
+- complete tree all filled except last from left to right
+
 
 ![priority queue](Topics/priorityQueue.png) 
 
@@ -199,6 +281,7 @@ if (A[j] < A[i] ) {
 ![Alt text](image-2.png)
 
 
+> because heaps are complete trees you can find parent nodes using an array by dividing the index by 2 
 # Build Heap
 ### Approach 1: insert (A[i]), i=0,1,...n.
 - complexity O(nlogn)
@@ -235,3 +318,210 @@ for i=N/2  down to 1  { percolatedown (i); }
 - pop()
 - size()
 - empty()
+
+
+
+
+# Map and Set (continued)
+
+
+### heap 
+ putting stuff on the top , more on bottom, less on top
+
+
+AVL tree has a pointer to parent node.
+
+reminder: 
+- Because heaps are complete trees you can find parent nodes using an array by dividing the index by 2 
+
+## insert Binary heap  
+### big oh 
+- worst case: log(n) 
+- Best case: 0(1),
+-  average case: O(1)
+````c++
+#include <iostream>
+using namespace std;
+
+int MaxSize = 1024;
+int n = 0;
+int *h;
+
+
+
+
+
+
+
+
+
+
+
+void heap_insert(int *h, int n, int k) {
+if (n==0) {
+    h[1] = k;
+    n++;
+    return;
+}
+// where should we attempt to save k?
+int p = n+1;
+while (true) {
+    if (p==1 || h[p/2] <= k){
+        h[p] = k;
+        n++;
+        break;
+    }
+    if (h[p/2]){
+    h[p] = k;
+    n++;
+    break;
+}else {
+    h[p] = h[p/2]; // move the parent down. 
+    p /= 2;
+}
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main(){
+
+h = new int [MaxSize]
+int n = 0;
+heap_insert(10);
+
+}
+
+
+````
+
+
+
+# delete min
+- best case : o(logn)?
+- avg case: o(logn)
+- worst case: o(logn)
+
+
+````c++
+#include <iostream>
+using namespace std;
+
+int MaxSize = 1024;
+int n = 0;
+int *h;
+
+
+
+// decrements and swaps the last node and then updates the heap and its leaves in order to least value parents 
+int  delete_min(){
+    if(n == 0){
+        throw = "Empty Heap";
+    }
+if (n==1){
+    n=0;
+return h[1];
+}
+// now the number of items in the heap is at least 2
+int k = h[n];
+n-= 1;
+int p = 1;
+while (true) {
+    if (2*p>n) {
+        h[p] =k;
+        break;
+    }
+    // now handle case when p has only one child
+    if (2*p + 1 > n){ // no right child 
+    if (k > h[p*2]) {
+        h[p] = h[p*2]; 
+        h[p*2]= k;
+    }else {
+        h[p] = k;
+    } 
+    break;
+    }
+
+    }
+    // try to put to pos p 
+    if (k>h[p*2] || k>h[p/2+1]){ // k is greater than at least one child 
+        if (h[p*2] < h[p*2 + 1]){
+            h[p] = h[p*2];
+            p *= 2;
+        } else { // right child smaller 
+         h[p] = h[p*2 + 1];
+            p = p*2+1;
+        }
+        else { // k is less than both children. 
+            h[p] = k;
+            break;
+ }
+        }
+        return res;
+    }
+
+
+
+
+
+int main(){
+
+// delete min helper method for printing
+    int r; 
+    while (){
+        r = deletemin();
+        cout << r << '\n';
+    }
+
+h = new int [MaxSize]
+int n = 0;
+heap_insert(10);
+
+
+
+return 0;
+}
+
+
+````
+###  heap sort 
+> there is a heap sort , best case , worst case , average case , complexity of other sort algorithims are O (logn)
+
+
+# unordered set 
+
+````c++
+#include <set>
+#include <iostream>
+#include <map>
+using namespace std;
+
+unordered_set<int> S;
+
+S.insert();
+S.insert();
+S.insert();
+S.insert();
+set<int>::iterator it;
+for (it=S.begin();it!=S.end();it++){
+
+}
+
+
+int main(){
+
+}
+
+
+````
