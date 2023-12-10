@@ -67,12 +67,12 @@
 
 - #### [C++ Set and Map](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Map_Set.md)
 
-- #### [C++ Hash Tables]()
+- #### [C++ Hash Tables](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/HashTables.md)
 
-- #### [C++ Hash Tables Functions]()
+- #### [C++ Hash Tables Functions](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/HashTable.cpp)
 
-- #### [C++ Priority queue functions]()
+- #### [C++ Priority queue functions](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/priorityQueue.cpp)
 
-- #### [C++ Graphs]()
+- #### [C++ Graphs](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Graphs.md)
 
-- #### [C++ Graphs Functions]()
+- #### [C++ Graphs Functions](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Graphs.cpp)
