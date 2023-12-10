@@ -48,6 +48,8 @@
 
 ### Data Structures (C++) 
 
+- #### [Big-O Complexity Chart](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/Big-O_Complexities.md)
+
 - #### [Section 1](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/C%2B%2BSection1.md)
 
 - #### [C++ syntax](https://github.com/KennyH1886/Notes-Complete-edition/blob/master/Topics/C%2B%2BSyntax.md)
